@@ -1,1 +1,42 @@
 @import "./node_modules/bootstrap/scss/bootstrap.scss";
+
+*{
+    font-family: "Inter", sans-serif;
+}
+
+.fs-7{
+    font-size: 0.75rem;
+}
+
+.btn-info{
+    --bs-btn-bg: #d9b878;
+    --bs-btn-border-color: #d9b878;
+    --bs-btn-hover-bg: #caa96a;
+    --bs-btn-hover-border-color: #caa96a;
+    --bs-btn-active-bg: #b8995c;
+    --bs-btn-active-border-color: #b8995c;
+}
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
+}
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card-body a {
+  margin-top: auto;
+}
+.card-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
