@@ -1,10 +1,42 @@
 "use client"
 
 import React, { useState } from 'react'
+import { validateExistingUser } from '../validators/authSchemas';
+import axios from 'axios';
 
 const RegisterForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const [errorMessage, setErrorMessage] = useState("");
+    const [error, setError] = useState(false);
+
+    const handleSubmit = async () => {
+        const validateResult = validateExistingUser(email, password);
+
+        if (validateResult !== "Success") {
+            setErrorMessage(validateResult);
+            setError(true);
+            return;
+        }
+
+        setError(false);
+        setErrorMessage("");
+
+        const response = await axios.post("/api/auth/login", {
+            email,
+            password,
+        });
+
+        const data = await response.data;
+
+        if (response.status !== 200){
+            setErrorMessage(data.error);
+            setError(true);
+        }
+
+        console.log("JWT" + data.token);
+    }
     
     return (
         <>
@@ -20,9 +52,16 @@ const RegisterForm = () => {
                             <label htmlFor="password" className="form-label">Password</label>
                             <input type="password" className="form-control" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                         </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <a type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</a>
                     </form>
                     <a href="/sign-up" className='d-block mt-3'>Don't have an account? Sign up here.</a>
+                    {
+                        error ? (
+                            <div className='alert alert-danger mt-4'>{errorMessage}</div>
+                        ) : (
+                            <></>
+                        )
+                    }
                 </div>
             </div>
         </>

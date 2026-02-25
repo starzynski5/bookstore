@@ -25,12 +25,9 @@ const newUserSchema = Joi.object({
 })
 
 const existingUserSchema = Joi.object({
-    username: Joi.string().alphanum().min(3).max(20).required().messages({
-        "string.empty": "Username can't be empty.",
-        "string.min": "Username is too short. Minimum 3 characters.",
-        "string.max": "Username is too long. Maximum 20 characters.",
-        "any.required": "Username field is required to process.",
-        "string.alphanum": "Username doesn't only contain alphanumeric characters."
+    email: Joi.string().email({ minDomainSegments: 2, tlds: false }).required().messages({
+        "string.empty": "Email can't be empty.",
+        "string.email": "Email is not valid."
     }),
     password: Joi.string().min(3).max(20).required().messages({
         "string.empty": "Password can't be empty.",
@@ -50,8 +47,8 @@ export const validateNewUser = (getUsername: string, getEmail: string, getPasswo
     return "Success";
 }
 
-export const validateExistingUser = (getUsername: string, getPassword: string) : string => {
-    const result = existingUserSchema.validate({ username: getUsername, password: getPassword });
+export const validateExistingUser = (getEmail: string, getPassword: string) : string => {
+    const result = existingUserSchema.validate({ email: getEmail, password: getPassword });
 
     if (result.error != null) {
         return result.error.message;
