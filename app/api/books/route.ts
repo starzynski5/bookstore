@@ -1,7 +1,9 @@
 import axios from "axios";
 
 export async function GET() {
-    const res = await axios.get("http://localhost:5209/api/book", {
+    const ip = process.env.BACKEND_URL;
+
+    const res = await axios.get(`${ip}/api/book`, {
         headers: {
             'Content-Type': 'application/json'
         }

@@ -32,7 +32,7 @@ const AllCategoriesRender = () => {
                 return (
                     <div key={category.id}>
                         <div className='row mt-3'>
-                            <Label text={category.name} bootstrapIcon='bi bi-book' />
+                            <Label text={category.name} bootstrapIcon='bi bi-book' fs={3} />
                         </div>
 
                         <div className='row'>
@@ -40,7 +40,7 @@ const AllCategoriesRender = () => {
                                 <div key={book.id} className='col-11 col-sm-5 col-md-4 col-lg-3 g-3'>
                                     <Card title={book.title} author={book.author} content={book.content} coverLink={book.coverLink} />
                                 </div>
-                            )).slice(0, 5)}
+                            )).slice(0, 4)}
                         </div>
                     </div>
                 )

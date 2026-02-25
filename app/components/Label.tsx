@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Label = ({text, bootstrapIcon} : {text: string, bootstrapIcon: string}) => {
+const Label = ({text, bootstrapIcon, fs} : {text: string, bootstrapIcon: string, fs: number}) => {
     return (
-        <span className={`fs-5 ${bootstrapIcon}`}> {text}</span>
+        <span className={`fs-${fs} ${bootstrapIcon}`}> {text}</span>
     )
 }
 

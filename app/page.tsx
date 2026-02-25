@@ -34,7 +34,7 @@ const Home = () => {
 
             <div className='row justify-content-center'>
                 <div className='col-11 col-md-10 px-0'>
-                    <Label text='Recommended Books' bootstrapIcon='bi bi-stars' />
+                    <Label text='Recommended Books' bootstrapIcon='bi bi-stars' fs={5} />
                 </div>
             </div>
 

@@ -31,7 +31,7 @@ const Navigation = () => {
         </ul>
 
         <form className="d-flex">
-          <button className="btn btn-success">Login</button>
+          <a className="btn btn-success" href="/sign-in">Login</a>
         </form>
 
       </div>
