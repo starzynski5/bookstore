@@ -6,7 +6,6 @@ export async function POST(request: Request) {
     const ip = process.env.BACKEND_URL;
 
     const body = await request.json();
-    console.log("BODY TO BACKEND:", body);
 
     try {
         const res = await axios.post(`${ip}/api/auth/register`, body, {
@@ -33,6 +32,14 @@ export async function POST(request: Request) {
         cookieStore.set({
             name: "username",
             value: username,
+            httpOnly: false,
+            secure: process.env.NODE_ENV === "production",
+            maxAge: 60 * 60 * 24 * 7, // 1 week
+        });
+
+        cookieStore.set({
+            name: "isLoggedIn",
+            value: "true",
             httpOnly: false,
             secure: process.env.NODE_ENV === "production",
             maxAge: 60 * 60 * 24 * 7, // 1 week
