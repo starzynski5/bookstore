@@ -41,7 +41,7 @@ const Home = () => {
                     loaded ? (
                         books.map((book) => (
                             <div key={book.id} className='col-11 col-sm-5 col-md-4 col-lg-2 g-4'>
-                                <Card title={book.title} author={book.author} content={book.content} coverLink={book.coverLink} />
+                                <Card title={book.title} author={book.author} content={book.content} coverLink={book.coverLink} url={book.url} />
                             </div>
                         )).slice(0, 5)
                     ) : (

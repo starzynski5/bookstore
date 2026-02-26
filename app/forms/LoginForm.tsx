@@ -3,8 +3,11 @@
 import React, { useState } from 'react'
 import { validateExistingUser } from '../validators/authSchemas';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const RegisterForm = () => {
+    const router = useRouter();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -35,7 +38,7 @@ const RegisterForm = () => {
             setError(true);
         }
 
-        console.log("JWT" + data.token);
+        router.push("/dashboard");
     }
     
     return (

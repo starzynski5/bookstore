@@ -6,6 +6,7 @@ export interface Book {
     author: string;
     content: string;
     coverLink: string;
+    url: string;
     categoryId: number;
     category: Category;
 }
