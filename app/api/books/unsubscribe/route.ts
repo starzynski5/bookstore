@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     }
 
     try {
-        const res = await axios.post(`${ip}/api/User/subscribe/${body.bookId}`, body, {
+        const res = await axios.post(`${ip}/api/User/unsubscribe/${body.bookId}`, body, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
@@ -23,9 +23,9 @@ export async function POST(request: Request) {
             withCredentials: true
         });
 
-        const message = res.data.message;
+        console.log(res);
 
-        return Response.json({ message }, { status: 200 });
+        return Response.json({ message: "Unsubscribed successfully" }, { status: 200 });
     } catch (err: any) {
         const errorMessage =
             err.response?.data?.message ||

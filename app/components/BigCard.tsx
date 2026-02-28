@@ -1,7 +1,21 @@
+import axios from 'axios'
 import React from 'react'
 
 const BigCard = ({id, title, author, content, coverLink, url, isUserLogged} : {id: number, title: string, author: string, content: string, coverLink: string, url: string, isUserLogged: boolean}) => {
-    console.log(content);
+
+    const handleSubmit = async () => {
+        const res = await axios.post("/api/subscribe", {
+            bookId: id
+        }, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
+        });
+
+        console.log(await res.data);
+    }
+
     return (
         <div>
             <div className='card my-5 border-0'>
@@ -17,7 +31,7 @@ const BigCard = ({id, title, author, content, coverLink, url, isUserLogged} : {i
                             <p className='fs-6'>{content}</p>
                             {
                                 isUserLogged ? (
-                                    <a href="" className="btn btn-primary w-50">Add to my collection</a>
+                                    <a onClick={handleSubmit} className="btn btn-primary w-50">Add to my collection</a>
                                 ) : (
                                     <a href="/sign-in" className="btn btn-primary w-50">Login to add to collection</a>
                                 )

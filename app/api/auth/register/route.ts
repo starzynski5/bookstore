@@ -11,7 +11,7 @@ export async function POST(request: Request) {
         const res = await axios.post(`${ip}/api/auth/register`, body, {
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
         });
 
         const token = await res.data;
