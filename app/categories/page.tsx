@@ -1,5 +1,5 @@
 import React from 'react'
-import AllCategoriesRender from '../modules/AllCategoriesRender'
+import AllCategoriesRender from '@/app/modules/AllCategoriesRender'
 
 const page = () => {
     return (
