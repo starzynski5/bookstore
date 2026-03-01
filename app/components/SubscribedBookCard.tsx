@@ -1,13 +1,12 @@
-import axios from 'axios'
+"use client";
+
 import React from 'react'
 
-const SubscribedBookCard = ({id, title, author, coverLink, url} : {id: number, title: string, author: string, coverLink: string, url: string}) => {
+const SubscribedBookCard = ({id, title, author, coverLink, onUnsubscribe} : {id: number, title: string, author: string, coverLink: string, onUnsubscribe: (id: number) => void}) => {
+    
+
     const handleUnsubscribe = async () => {
-        const res = await axios.post(`/api/books/unsubscribe`, { bookId: id });
-
-        const message = res.data.message;
-
-        console.log(message);
+        onUnsubscribe(id);
     }
 
     return (

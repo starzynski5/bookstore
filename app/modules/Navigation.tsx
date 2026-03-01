@@ -1,11 +1,17 @@
 "use client";
 
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { ThreeDot } from 'react-loading-indicators';
 
 const Navigation = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [checked, setChecked] = useState(false);
+
+  const handleLogout = async () => {
+    await axios.get('/api/auth/logout');
+    window.location.reload()
+  }
 
   useEffect(() => {
     const cookieValue = document.cookie.split('; ').find(row => row.startsWith('isLoggedIn='));
@@ -55,6 +61,9 @@ const Navigation = () => {
             <ul className="navbar-nav mb-2 mb-lg-0">
               <li className="nav-item">
                 <a className="nav-link active" href="/dashboard">Dashboard</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link active" style={{cursor: 'pointer'}} onClick={handleLogout}>Logout</a>
               </li>
             </ul>
           ) : (

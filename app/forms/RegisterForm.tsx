@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react'
-import { validateNewUser } from '../validators/authSchemas';
+import { validateNewUser } from '@/app/validators/authSchemas';
 import axios from 'axios';
 
 const RegisterForm = () => {
@@ -41,7 +41,7 @@ const RegisterForm = () => {
             setError(true);
         }
 
-        console.log("JWT" + data.token);
+        window.location.href = "/";
     }
     
     return (

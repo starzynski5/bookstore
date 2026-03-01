@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from 'react'
-import Hero from './modules/Hero'
-import Label from './components/Label'
-import Card from './components/Card'
-import GoToAction from './modules/GoToAction'
-import { Book } from './types/book';
+import Hero from '@/app/modules/Hero'
+import Label from '@/app/components/Label'
+import Card from '@/app/components/Card'
+import GoToAction from '@/app/modules/GoToAction'
+import { Book } from '@/app/types/book';
 import axios from 'axios';
 import { OrbitProgress } from 'react-loading-indicators';
 

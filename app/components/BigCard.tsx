@@ -1,7 +1,10 @@
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
-const BigCard = ({id, title, author, content, coverLink, url, isUserLogged} : {id: number, title: string, author: string, content: string, coverLink: string, url: string, isUserLogged: boolean}) => {
+const BigCard = ({id, title, author, content, coverLink, isUserLogged} : {id: number, title: string, author: string, content: string, coverLink: string, isUserLogged: boolean}) => {
+
+    const router = useRouter();
 
     const handleSubmit = async () => {
         const res = await axios.post("/api/subscribe", {
@@ -13,18 +16,22 @@ const BigCard = ({id, title, author, content, coverLink, url, isUserLogged} : {i
             withCredentials: true
         });
 
-        console.log(await res.data);
+        if (res.status === 200) {
+            router.push("/dashboard");
+        } else {
+            router.refresh();
+        }
     }
 
     return (
         <div>
             <div className='card my-5 border-0'>
                 <div className='row g-3 justify-content-center'>
-                    <div className='col-md-3'>
+                    <div className='col-12 col-xl-3'>
                         <img src={coverLink
                         } className='img-fluid rounded-start' alt={title} width={500} height={650} />
                     </div>
-                    <div className='col-md-4'>
+                    <div className='col-xl-4'>
                         <div className='card-body'>
                             <h5 className='card-title fs-3'>{title}</h5>
                             <h6 className='card-subtitle mb-2 text-muted fs-5'>by {author}</h6>

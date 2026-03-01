@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from 'react'
-import { Category } from '../types/category';
+import { Category } from '@/app/types/category';
 import axios from 'axios';
-import Card from '../components/Card';
-import Label from '../components/Label';
+import Card from '@/app/components/Card';
+import Label from '@/app/components/Label';
 import { OrbitProgress } from 'react-loading-indicators';
 
 const AllCategoriesRender = () => {

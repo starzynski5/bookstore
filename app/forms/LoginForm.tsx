@@ -1,13 +1,10 @@
 "use client"
 
 import React, { useState } from 'react'
-import { validateExistingUser } from '../validators/authSchemas';
+import { validateExistingUser } from '@/app/validators/authSchemas';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
 
 const RegisterForm = () => {
-    const router = useRouter();
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -38,7 +35,7 @@ const RegisterForm = () => {
             setError(true);
         }
 
-        router.push("/dashboard");
+        window.location.href = "/";
     }
     
     return (

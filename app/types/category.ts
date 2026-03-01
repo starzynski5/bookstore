@@ -1,4 +1,4 @@
-import { Book } from "./book";
+import { Book } from "@/app/types/book";
 
 export interface Category {
     id: number;

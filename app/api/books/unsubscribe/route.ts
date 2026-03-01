@@ -22,9 +22,7 @@ export async function POST(request: Request) {
             },
             withCredentials: true
         });
-
-        console.log(res);
-
+        
         return Response.json({ message: "Unsubscribed successfully" }, { status: 200 });
     } catch (err: any) {
         const errorMessage =

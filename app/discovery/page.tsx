@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from 'react'
-import { Book } from '../types/book';
+import { Book } from '@/app/types/book';
 import axios from 'axios';
-import Card from '../components/Card';
+import Card from '@/app/components/Card';
 import { OrbitProgress } from 'react-loading-indicators';
 
 const page = () => {
